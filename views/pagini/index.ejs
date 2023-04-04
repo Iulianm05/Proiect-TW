@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="jocuri, jocuri video, vanzare, top jocuri, ultima generatie">
+    <meta name="description" content="Gaming Galaxy ofera o gama larga de jocuri video la preturi reduse, pentru a te face sa te relaxezi in timpul liber.">
+    <meta name="author" content="Marin Iulian">
+    
+    <title>GameShop</title>
+    <%- include("../fragmente/head.ejs") %>
+</head>
+<body>
+    
+    <%- include("../fragmente/header.ejs") %>
+  
+    <main>
+        
+            <div id="grid-pagina">
+                <section id="welcome">
+                   
+                        
+           
+                      
+                    <h2>Bine ati venit!</h2>
+                    <p><q lang="ro">Jocurile video sunt o formă de artă în mișcare, în care jucătorii devin artiști și creatorii propriei lor experiențe.</q>- Anita Sarkeesian</p>
+                    <p class="intro">
+                        Va multumim pentru ca ati ales sa achizitionati <b>jocuri video</b> accesand site-ul nostru!
+                        Pentru a va recompensa va vom oferi unul din jocurile urmatoare:
+                    </p>
+                   
+                    <ul>
+                        <li><a class="link-stilizare" href="https://en.wikipedia.org/wiki/Super_Mario" target="_blank">Super Mario</a>
+                        </li>
+                        <li>FIFA98</li>
+                        <li>GTA2</li>
+                    </ul>
+                    <picture class="img"><img src="./resurse/imagini/super-mario.png" alt="super-mario" title="super-mario" class="imagini-mici"></picture>
+                    <picture class="img"><img src="./resurse/imagini/zidane.png" alt="fifa98" title="Fifa98" class="imagini-mici"></picture>
+                    <picture class="img"><img src="./resurse/imagini/gta2.jpg" alt="fifa98" title="GTA2" class="imagini-mici"></picture>
+                    <p>
+                        Site-ul nostru dispune de jocuri dintr-o gama foarte larga de categorii, putand avea jocuri in format fizic(blu-ray), cat si in format digital.
+                    </p>
+                    <figure class="figuri">
+                        <picture>
+                            <source media="(max-width:500px)" srcset="./resurse/imagini/game-tel.png">
+                            <source media="(max-width:1000px)" srcset="./resurse/imagini/game-tab.png">
+                            <img src="./resurse/imagini/game-console-gb875b504b_640.jpg" alt="imag-promo" class="imagini">
+                        </picture>
+
+                        <figcaption>
+                            Imagine controller
+                        </figcaption>
+                    </figure>
+                   
+                    <p>Pe langa acestea, site-ul nostru dispune de cele mai noi jocuri de pe piata. Unul dintre ele va fi lansat in viitorul apropiat.</p>
+                   <div class="video-container">
+                    <video width="320" height="240" controls="controls"  poster="/resurse/imagini/Grand-Theft-Auto-VI-GTA-6-Concept-Feature.jpg">
+                        <source src="/resurse/videoclipuri/GTA 6 Official Trailer.mp4" type="video/mp4">
+                        <source src="/resurse/videoclipuri/GTA 6 Official Trailer.avi" type="video/avi">
+                        <track default src="/resurse/videoclipuri/captions_ro.vtt" kind="captions" srclang="ro" label="romana">
+                        <track src="/resurse/videoclipuri/captions_en.vtt" kind="captions" srclang="en" label="engleza">
+                    </video>
+                    
+                    <p>Sursa videoclipului o gasiti la acest <span><a class="link-stilizare" href="https://www.youtube.com/watch?v=z7-K1zmBu-8">link</a></span></p>
+                   </div>
+                    
+                </section>
+               
+                <section id="promotii">
+
+                    <h2>Promoții</h2>
+                    <section>
+                        <h3 class="of-week">Super ofertă de weekend</h3>
+                        <p><b>Gaming Galaxy</b> oferă <b>reduceri de <s>10%</s> <ins>15%</ins></b> pentru toate jocurile cumpărate în intervalul 10-14.</p>
+                        <p>Oferta este valabilă în zilele de sâmbătă și duminică la sediile <abbr title="Gaming Galaxy">GG</abbr> sau pe site</p>
+                        <p>In cazul în care cumpărați mai mult de trei jocuri primiti un joc gratuit pe loc.</p>
+                    </section>
+                    <section>
+                        <h3 class="titlu-promo1">Promotie 1</h3>
+                        <p>Pentru inceputul activitatii site-ului va oferim pachetul urmator de jocuri la promotie</p>
+                        <ol>
+                            <li>Gta 5</li>
+                            <li>RDR2</li>
+                            <li>FIFA 23 </li>
+                            <li>The Witcher 3</li>
+                        </ol>
+                        <p>Acest pachet vi-l oferim la formidabilul pret de <b>1000 lei</b></p>
+                        
+                    </section>
+                    <section>
+                        <h3 class="titlu2">Promotie 2</h3>
+                        <p>Pentru ca ne gandim la tine mereu, daca sunteti printre primii 100 de utilizatori ce isi creeaza cont pe platforma noastra, veti primi un PS4 impreuna cu jocuri de <b>ultima generatie</b> , cum ar fi: </p>
+                        <ol>
+                            <li>The Last of us II</li>
+                            <li>Horizon Zero Down</li>
+                            <li>God of War </li>
+                            <li>Spider-Man</li>
+                        </ol>
+                        <p>Tot acest pachet il veti putea achizitiona la pretul de <b>2000 de lei</b></p>
+                        
+                    </section>
+                </section>
+                <section id="top_jocuri">
+                    <h2 >Topul jocurilor saptamanale</h2>
+                    <p>In fiecare saptamana se va actualiza <b>topul jocurilor</b> preferate de utilizatori. Saptamana aceasta topul este:</p>
+                    <ol>
+                        <li>Red Dead Redemption 2</li>
+                        <li>CS GO</li>
+                        <li>GTA 5</li>
+                        <li>FIFA 23</li>
+                        <li>Fortnite</li>
+                        <li>GTA SAN ANDREAS</li>
+                    </ol>
+                </section>
+                <section id="informatii">
+                    <h2>Informatii</h2>
+                    <section>
+                        <h3>Despre noi</h3>
+                        <p>Prin comercializarea de jocuri noi dorim sa va simtiti cat mai bine si cat mai relaxati in timpul liber jucandu-va jocuri de ultima generatie achizitionate de la noi.</p>
+                    </section>
+                    <section>
+                        <h3>Termen livrare jocuri</h3>
+                        <p>Daca doriti sa comandati jocuri in formate fizice, va trebui sa completati un <a class="link-stilizare" href="./resurse/download/formular.txt"  download>formular</a>
+                             cu adresa si datele de contact. Livrarea produsul poate dura intre 5-10 zile lucratoare, deci va incurajam sa achizitionati jocuri doar in format digital.</p>
+                    </section>
+                </section>
+                <section id="jocuri">
+                    <h2>Jocuri</h2>
+                    <p>Jocurile pe care le oferim spre <b>vanzare</b> sunt:
+                    </p>
+                    <section id="jocuri-aventura">
+                        <h3>Jocuri aventura</h3>
+                        <ul>
+                            <li>The Legend of Zelda: Breath of the Wild</li>
+                            <li>Uncharted 4: A Thief's End</li>
+                            <li>Tomb Raider</li>
+                            <li>Assassin's Creed</li>
+                            <li>Horizon Zero Dawn</li>
+                        </ul>
+                    </section>
+                    <section id="jocuri-strategie">
+                        <h3>Jocuri strategie</h3>
+                        <ul>
+                            <li>Age of Empires</li>
+                            <li>Starcraft</li>
+                            <li>Total war</li>
+                            <li>Civilization</li>
+                        </ul>
+                    </section>
+                    <section id="jocuri-sport">
+                        <h3>Jocuri sport</h3>
+                        <ul>
+                            <li>Fifa 23</li>
+                            <li>Fifa 22</li>
+                            <li>PES 22</li>
+                            <li>Football manager 23</li>
+                            <li>Top eleven</li>
+                        </ul>
+                    </section>
+                    <section id="jocuri-RPG">
+                        <h3>Jocuri RPG</h3>
+                        <ul>
+                            <li>The Witcher 3: Wild Hunt </li>
+                            <li>Gta 5</li>
+                            <li>RDR2</li>
+                            <li>The last of us II</li>
+                        </ul>
+                    </section>
+                    <section id="jocuri-multiplayer">
+                        <h3>Jocuri Multiplayer</h3>
+                        <ul>
+                            <li>Fortnite</li>
+                            <li>League of legends</li>
+                            <li>Minecraft</li>
+                            <li>Counter-Strike Global Offensive</li>
+                        </ul>
+                    </section>
+                    
+                </section>
+                <section id="index-intrebari">
+                    <h2>Întrebări frecvente </h2>
+                    <details><summary>Jocurile de pe site sunt de incredere?</summary>
+                        <p>Da!</p>
+                    </details>
+                    <details><summary>Veti avea mai multe categorii de jocuri puse spre vanzare??</summary>
+                        <p>Da!</p>
+                    </details>
+                    <details><summary>Reducerile sunt saptamanale?</summary>
+                        <p>Da!</p>
+                    </details>
+                    <details><summary>Cate ore pe zi este recomandat sa va jucati jocuri video?</summary>
+                        <p>Cel mult 2 ore.</p>
+                    </details>
+                </section>
+                <section id="tabel">
+                    <h2>Topul cumparatorilor</h2>
+                    <table id="idtabel">
+                        <caption> Un tabel frumos</caption>
+                        <thead>
+                            <tr>
+                                <th>Nume</th>
+                                <th>Prenume</th>
+                                <th>Jocuri cumparate</th>
+                                <th>Puncte reducere</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Marinel</td>
+                                <td>Tudor</td>
+                                <td>10</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Florin</td>
+                                <td>Ion</td>
+                                <td>9</td>
+                                <td>95</td>
+                            </tr>
+                            <tr>
+                                <td>Albert</td>
+                                <td>Albu</td>
+                                <td>8</td>
+                                <td>88</td>
+                            </tr>
+                            <tr>
+                                <td>Corina</td>
+                                <td>Stefanescu</td>
+                                <td>8</td>
+                                <td>80</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Puncte bonus</td>
+                                <td>500</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    </section>
+                 
+                    <SECTION id="utilizatori">
+                        <h2>Trailere jocuri</h2>
+                        <div id="container-iframe">
+                            <p>Puteti sa accesati link-urile de mai jos pentru a viziona anumite trailere ale unor jocuri:
+                            </p>
+                            <div id="taburi-iframe">
+                                <a href="https://www.youtube.com/embed/hvoD7ehZPcM" target="ifr-video">GTA 5-Trailer</a>
+                                <a href="https://www.youtube.com/embed/eaW0tYpxyp0" target="ifr-video" >Red Dead Redemption 2 - Trailer</a>
+                                <a href="https://www.youtube.com/embed/o3V-GvvzjE4" target="ifr-video" >FIFA 23 - Trailer</a>
+                            </div>
+                                <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/hvoD7ehZPcM" 
+                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </SECTION>
+                
+            </div>
+           
+    </main>
+    <div id="grid-galerie">
+        <% for (let imag of locals.imagini) {
+            d=new Date();
+            Date.getMonth;
+            var v_luni=["ianuarie", "februarie", "martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"];
+            if(imag.luni && imag.luni.includes(v_luni[d.getMonth()])){
+            
+            %>
+           
+                <figure>
+                    <picture>
+                        <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+                        <img src="<%- imag.fisier %>" alt="imagine">
+                    </picture>
+                    <figcaption><%- imag.descriere %></figcaption>
+                </figure>
+    
+            <% } %>
+        <% }  %>
+    </div>
+    <%- include("../fragmente/footer.ejs") %>
+</body>
+</html>

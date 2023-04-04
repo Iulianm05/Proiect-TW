@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "sharp": "^0.32.0"
+  },
+  "name": "proiect-tw",
+  "version": "1.0.0",
+  "description": " Gaming Galaxy ofera o gama larga de jocuri video la preturi reduse, pentru a te face sa te relaxezi in timpul liber.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jocuri",
+    "jocuri",
+    "video",
+    "Gaming",
+    "Galaxy",
+    "vanzare",
+    "top",
+    "jocuri",
+    "ultima",
+    "generatie"
+  ],
+  "author": "Marin Iulian",
+  "license": "ISC"
+}

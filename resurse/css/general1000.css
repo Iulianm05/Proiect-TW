@@ -1,0 +1,39 @@
+#tabel{
+    overflow-x:auto;
+}
+#grid-pagina{
+    /* display: grid; */
+    grid-template-columns:repeat(2,1fr);
+    grid-template-areas:"z-welcome z-welcome  " 
+                        "z-jocuri z-jocuri " 
+                        "z-top-jocuri z-tabel"        
+                        "z-informatii z-index-intrebari "
+                        "z-promotii z-promotii"
+                        "z-utilizatori  z-utilizatori"
+                                                
+    ;
+    gap:4px 4px;
+}
+body{
+    --marime-scris:0.9rem;
+    font-size: var(--marime-scris);
+}
+main{
+    background-color:var(--culoare-fundal);
+    padding-left:calc(var(--spatiere-pagina) - 4px);
+    padding-right:calc(var(--spatiere-pagina) - 4px);
+}
+
+body{
+    --inaltime-meniu:45px;
+    --latime-buton:100px;
+}
+
+/* div e block */
+
+
+/* #grid-pagina>*{
+    border:3px solid red;
+} */
+
+

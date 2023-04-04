@@ -1,0 +1,91 @@
+#hamburger, #ch-menu{
+    display: none;
+}
+body{
+    --inaltime-meniu:50px;
+    --latime-buton:210px;
+    --culoare-meniu:var(--culoare-fundal-inchis);
+    --culoare-border-buton:black;
+}
+nav{
+    --culoare-hover:#0800AD;
+    --text-meniu:black;
+    background-color: var(--culoare-meniu);
+    /* width:100%; */
+    width: calc(100vw - 18px);
+    height:var(--inaltime-meniu);
+    position:sticky;
+    top:0;
+    margin-left:calc(-1*var(--spatiere-pagina));
+    
+}
+ul.meniu{
+    &, ul{
+        padding:0;
+        margin:0;
+        list-style-type: none;
+        box-sizing: border-box;
+    }
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;/*pune meniul pe randul urmator in cazul in care fereastra e mica*/
+    > li{
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis:var(--latime-buton);
+    }
+    
+    li{
+        width:var(--latime-buton);
+        height:var(--inaltime-meniu);
+        background-color:var(--culoare-meniu);
+        overflow: hidden;
+        text-align: center;
+        border: 1px solid var(--culoare-border-buton);
+        transition:background-color 0.2s linear;
+        transition:box-shadow 0.5s linear;
+        box-sizing: border-box;
+        white-space: nowrap;
+        &:hover{
+            overflow: visible;
+            /* background-color:var(--culoare-hover) */
+            box-shadow: inset 0 0 20px var(--culoare-hover);
+        }
+        &:hover ul{
+            opacity:1;
+            transform:scale(1,1)
+        }
+        div,a{
+            display: block;
+            width:100%;
+            height:100%;
+            color:var(--text-meniu);
+            text-decoration:none;
+            font-weight: bold;
+            line-height:var(--inaltime-meniu);
+        }
+        ul li:hover{
+            box-shadow: none;
+        }
+    }
+    ul{
+        opacity:0;
+        transition:all 0.5s linear;
+        transform: scale(1,0);
+        transform-origin:center top;
+    }
+}
+a{
+    .arrow {
+        opacity: 0;
+        transition: all 0.3s linear;
+        position: absolute;
+        left: 5px;
+    }
+    &:hover .arrow {
+        opacity: 1;
+        display: block;
+        transform: translateX(100%);
+    }
+}
+ 

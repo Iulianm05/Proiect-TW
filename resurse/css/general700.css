@@ -1,0 +1,28 @@
+#link-top{
+     transition: none; 
+    /* asa se elimina tranzitiile */
+}
+#tabel{
+    overflow-x:scroll ;
+}
+#grid-pagina{
+    display: block;
+    gap:3px 3px;
+}
+body{
+    --marime-scris:0.8rem;
+    font-size: var(--marime-scris);
+}
+main{
+    background-color:var(--culoare-fundal);
+    padding-left:calc(var(--spatiere-pagina) - 8px);
+    padding-right:calc(var(--spatiere-pagina) - 8px);
+}
+body{
+    --inaltime-meniu:40px;
+    --latime-buton:100%;
+}
+#headerId{
+    font-size: 22px;
+}
+

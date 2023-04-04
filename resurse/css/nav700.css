@@ -1,0 +1,85 @@
+body{
+    --inaltime-meniu:40px;
+    --latime-buton:100%;
+}
+
+#hamburger{
+    display: block;
+    padding-left: 50px ;
+}
+
+/* #hamburger>img{
+    height: var(--inaltime-meniu);
+    width: auto;
+    display: block;
+    margin: 0;
+
+} */
+
+/* Meniu cu div-uri */
+.menu-icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 90%;
+    height: 6px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    border-radius: 6px;
+  }
+  
+  .bar1 {
+    top: 10%;
+  }
+  
+  .bar2 {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .bar3 {
+    bottom: 10%;
+  }
+
+ul.meniu{
+    display:none;
+}
+
+#ch-menu:checked+ul.meniu{
+    display: block;
+    width: 100%;
+    animation-name: animatie_meniu;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards; /*sa ramana */
+    animation-iteration-count: 1;
+    transform-origin:top left;/*pentru a incepe animatia de sus*/
+}
+/* cand se da click pe checkbox, se afiseaza meniul */
+
+@keyframes animatie_meniu {
+    0%{
+        opacity:0;
+        transform: scale(0.3,0.3);
+    }
+    50%{
+        transform:scale(0.66,0.66);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1,1);
+    }
+}
+
+.arrow, a:hover .arrow{ 
+    display:none;
+}
+
+ul.meniu li ul li:hover{
+    box-shadow:inset 0 0 20px var(--culoare-hover); ;
+}

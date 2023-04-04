@@ -1,0 +1,4 @@
+Nume:
+Prenume:
+Nr.telefon:
+Adresa:

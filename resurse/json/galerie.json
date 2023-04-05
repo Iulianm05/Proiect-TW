@@ -4,12 +4,12 @@
 		{
 			"fisier":"briose-frisca.png",
 			"descriere":"Brioșe",
-			"luni":["martie","februarie","noiembrie","aprilie"]
+			"luni":["martie","februarie","noiembrie"]
 		},
 		{
 			"fisier":"clatite.png",
 			"descriere":"Clătite cu dulceață",
-			"luni":["ianuarie","februarie","iunie","aprilie"]
+			"luni":["ianuarie","februarie","iunie"]
 			
 		},
 		{

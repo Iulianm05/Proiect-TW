@@ -1,0 +1,40 @@
+<div id="grid-galerie">
+    <%
+    var contor = 0;
+    var contor_pt_mijloc = 10; 
+    
+    for (let imag of locals.imagini) {
+        d=new Date();
+        console.log(d.getHours())
+        // var v_luni=["ianuarie", "februarie", "martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"];
+        if(contor%4==0 || contor_pt_mijloc == contor )
+        {
+            if(contor_pt_mijloc == contor)
+                contor_pt_mijloc +=12;
+            %>
+           <div class="blank"></div> 
+           <%
+        contor++;
+        }
+        // console.log(imag.intervale_ore)
+
+        
+       for(let ora of imag.intervale_ore){
+        if(ora[0]<=d.getHours()&&ora[1]>=d.getHours()){
+            %>
+            <figure>
+                <picture>
+                    <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+                    <img src="<%- imag.cale_relativa %>" alt="imagine">
+                </picture>
+                <figcaption><%- imag.descriere_imag %></figcaption>
+            </figure>
+            <%
+            contor++;
+            break%>
+       <% } 
+            
+    }%>
+            
+<% } %>
+</div>  

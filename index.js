@@ -2,16 +2,63 @@ const express = require("express");
 const fs= require('fs');
 const path=require('path');
 const sharp = require('sharp');
+const sass = require('sass');
 
 obGlobal={
     obErori:null,
-    obImagini:null
+    obImagini:null,
+    folderScss: path.join(__dirname,"resurse/scss"),
+    folderCss: path.join(__dirname,"resurse/css"),
+    folderBackup: path.join(__dirname, "backup")
 }
 
 app= express();
 console.log("Folder proiect", __dirname);
 console.log("Cale fisier", __filename);
 console.log("Director de lucru", process.cwd());
+
+vectorFoldere = ["temp","temp1","backup"]
+for(let folder of vectorFoldere){
+    let caleFolder=path.join(__dirname, folder)
+    if(!fs.existsSync(caleFolder)){
+        fs.mkdirSync(caleFolder);
+    }
+}
+
+function compileazaScss(caleScss, caleCss){
+    if(!caleCss){
+        let vectorCale = caleScss.split("\\")
+        let numeFisExt=vectorCale[vectorCale.length-1];
+        let numeFis=numeFisExt.split(".")[0]
+        caleCss=numeFis+".css";
+    }
+    if(!path.isAbsolute(caleScss))
+        caleScss = path.join(obGlobal.folderScss,caleScss)
+    if(!path.isAbsolute(caleCss))
+        caleCss=path.join(obGlobal.folderCss,caleCss)
+    //la acest punct avem cai absolute in caleScss si caleCss    
+    let vectorCale = caleCss.split("\\");
+    let numeFisCss = vectorCale[vectorCale.length-1];
+    if(fs.existsSync(caleCss)){
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss))
+    
+    }
+    let rez = sass.compile(caleScss,{"sourceMap":true})
+    fs.writeFileSync(caleCss,rez.css)
+    console.log("Compilare SCSS",rez)
+}   
+
+// compileazaScss("a.scss")
+
+fs.watch(obGlobal.folderScss, function(eveniment, numeFis){
+    console.log(eveniment, numeFis)
+    if(eveniment == "change" ||eveniment=="rename"){
+        let caleCompleta=path.join(obGlobal.folderScss, numeFis);
+        if(fs.existsSync(caleCompleta)){
+            compileazaScss(caleCompleta);
+        }
+    }
+})
 
 app.set("view engine","ejs");
 
@@ -36,6 +83,9 @@ app.get("/ceva", function(req, res){
 app.get(["/index","/","/home" ], function(req, res){
     res.render("pagini/index" , {ip: req.ip, a: 10, b:20,imagini:obGlobal.obImagini.imagini});
 
+})
+app.get(["/galerie"],function(req, res){
+    res.render("pagini/galerie",{ip: req.ip, a: 10, b:20,imagini:obGlobal.obImagini.imagini})
 })
 
 
@@ -95,12 +145,12 @@ function initImagini(){
     //for (let i=0; i< vErori.length; i++ )
     for (let imag of vImagini){
         // eroare.imagine="/"+obGlobal.obErori.cale_baza+"/"+eroare.imagine;
-        [numeFis,ext]=imag.fisier.split(".");
-        let caleFisAbs= path.join(caleAbs, imag.fisier);
+        [numeFis,ext]=imag.cale_relativa.split(".");
+        let caleFisAbs= path.join(caleAbs, imag.cale_relativa);
         let caleFisMedAbs = path.join(caleAbsMed, numeFis+".webp");
         sharp(caleFisAbs).resize(400).toFile(caleFisMedAbs);
         imag.fisier_mediu = "/"+path.join(obGlobal.obImagini.cale_galerie,"mediu", numeFis+".webp");
-        imag.fisier = "/"+path.join(obGlobal.obImagini.cale_galerie,imag.fisier)
+        imag.cale_relativa = "/"+path.join(obGlobal.obImagini.cale_galerie,imag.cale_relativa)
     }
 }
 initImagini();

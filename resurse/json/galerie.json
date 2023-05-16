@@ -5,13 +5,13 @@
 			"cale_relativa":"apex.png",
 			"nume_imag":"",
 			"alternativ":"text alternativ imagine", "descriere_imag":"Apex Legend",
-			"intervale_ore":[[2,7],[14,16],[22,23]]
+			"intervale_ore":[[2,7],[14,16],[21,23]]
 			},
 			{
 				"cale_relativa":"fifa.png",
 				"nume_imag":"Nume imagine",
 				"alternativ":"text alternativ imagine", "descriere_imag":"Fifa",
-				"intervale_ore":[[2,7],[14,16],[22,23]]
+				"intervale_ore":[[2,7],[14,16],[21,23]]
 			},
 			{
 				"cale_relativa":"gta5.png",
@@ -29,7 +29,7 @@
 				"cale_relativa":"mario.png",
 				"nume_imag":"Nume imagine",
 				"alternativ":"text alternativ imagine", "descriere_imag":"Mario",
-				"intervale_ore":[[2,7],[14,19],[22,23]]
+				"intervale_ore":[[2,7],[14,19],[21,23]]
 			},
 			{
 				"cale_relativa":"vice-city.png",

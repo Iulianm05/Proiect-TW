@@ -1,0 +1,45 @@
+#imagine1{
+	position:relative;
+
+	background-image:url("/resurse/imagini/player.png");
+	background-size:cover;
+    max-width: 500px; 
+	max-height: 500px;
+    height:100%;
+	width:100%;
+	filter:brightness(200%) grayscale(0) ;
+    margin: 0 auto;
+	transition:all 2s linear;
+   
+}
+
+#imagine1:after, #imagine1:before{
+	content:" ";
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	
+	transition:all 2s linear;
+}
+
+#imagine1:after{
+	background-color:#5064EA;
+	mix-blend-mode:lighten;
+}
+
+#imagine1:before{
+	background-color:gray;
+	mix-blend-mode:darken;
+}
+
+#imagine1:hover:after{
+	background-color:blue;
+	mix-blend-mode:lighten;
+}
+
+#imagine1:hover:before{
+	background-color:orange;
+	mix-blend-mode:darken;
+}

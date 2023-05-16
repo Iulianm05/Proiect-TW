@@ -3,15 +3,38 @@ const fs= require('fs');
 const path=require('path');
 const sharp = require('sharp');
 const sass = require('sass');
+const {Client} =require('pg');
+const AccesBD = require("./module_proprii/accesbd");
 
 obGlobal={
     obErori:null,
     obImagini:null,
     folderScss: path.join(__dirname,"resurse/scss"),
     folderCss: path.join(__dirname,"resurse/css"),
-    folderBackup: path.join(__dirname, "backup")
+    folderBackup: path.join(__dirname, "backup"),
+    optiuniMeniu:[]
 }
 
+
+var client= new Client({database:"Proiect Web",
+        user:"iulian",
+        password:"123456",
+        host:"localhost",
+        port:5432});
+client.connect();
+AccesBD.getInstanta().select({
+    tabel:"jocuri",
+    campuri:["nume","pret"],
+    conditiiAnd:["pret>70"]
+})
+client.query("select * from unnest(enum_range(null::tipuri_jocuri ))", function(err, rezCategorie){
+    if(err){
+        console.log(err);
+    }
+    else{
+        obGlobal.optiuniMeniu=rezCategorie.rows;
+    }
+})
 app= express();
 console.log("Folder proiect", __dirname);
 console.log("Cale fisier", __filename);
@@ -27,8 +50,9 @@ for(let folder of vectorFoldere){
 
 function compileazaScss(caleScss, caleCss){
     if(!caleCss){
-        let vectorCale = caleScss.split("\\")
-        let numeFisExt=vectorCale[vectorCale.length-1];
+        // let vectorCale = caleScss.split("\\")
+        // let numeFisExt=vectorCale[vectorCale.length-1];
+        let numeFisExt=path.basename(caleScss)
         let numeFis=numeFisExt.split(".")[0]
         caleCss=numeFis+".css";
     }
@@ -37,8 +61,13 @@ function compileazaScss(caleScss, caleCss){
     if(!path.isAbsolute(caleCss))
         caleCss=path.join(obGlobal.folderCss,caleCss)
     //la acest punct avem cai absolute in caleScss si caleCss    
-    let vectorCale = caleCss.split("\\");
-    let numeFisCss = vectorCale[vectorCale.length-1];
+    // let vectorCale = caleCss.split("\\");
+    // let numeFisCss = vectorCale[vectorCale.length-1];
+    let caleBackup=path.join(obGlobal.folderBackup,"resurse/css");
+    if(!fs.existsSync(caleBackup)){
+        fs.mkdirSync(caleBackup,{recursive:true});
+    }
+    let numeFisCss=path.basename(caleCss);
     if(fs.existsSync(caleCss)){
         fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss))
     
@@ -63,6 +92,12 @@ fs.watch(obGlobal.folderScss, function(eveniment, numeFis){
 app.set("view engine","ejs");
 
 app.use("/resurse", express.static(__dirname+"/resurse"));
+app.use("/node_modules", express.static(__dirname+"/node_modules"));
+
+app.use("/*", function(req,res,next){
+    res.locals.optiuniMeniu = obGlobal.optiuniMeniu;
+    next();
+})
 
 app.use(/^\/resurse(\/[a-zA-Z0-9]*)*$/, function(req,res){
     afisareEroare(res,403);
@@ -86,6 +121,59 @@ app.get(["/index","/","/home" ], function(req, res){
 })
 app.get(["/galerie"],function(req, res){
     res.render("pagini/galerie",{ip: req.ip, a: 10, b:20,imagini:obGlobal.obImagini.imagini})
+})
+app.get("/produse",function(req, res){
+
+
+    //TO DO query pentru a selecta toate produsele
+    //TO DO se adauaga filtrarea dupa tipul produsului
+    //TO DO se selecteaza si toate valorile din enum-ul categ_prajitura
+    client.query("select * from unnest(enum_range(null::cerinte_joc))", function(err, rezCategorie){
+        if(err){
+            console.log(err);
+        }
+        else{
+            let conditieWhere=""; 
+            if(req.query.tip){
+                conditieWhere=` where tip_produs='${req.query.tip}'`
+            }
+            client.query("select * from jocuri "+conditieWhere , function( err, rez){
+                console.log(300)
+                if(err){
+                    console.log(err);
+                    afisareEroare(res, 2);
+                }
+                else{
+                    console.log(rez);
+                    res.render("pagini/produse", {produse:rez.rows, optiuni:rezCategorie.rows});
+                }
+                    
+            });
+        }
+    })    
+    
+   
+
+
+});
+
+
+app.get("/produs/:id",function(req, res){
+    console.log(req.params);
+   
+    client.query(`select * from jocuri where id=${req.params.id}  `, function( err, rezultat){
+        if(err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else
+            res.render("pagini/produs", {prod:rezultat.rows[0]});
+    });
+});
+
+client.query("select * from unnest(enum_range(null::cerinte_joc))",function(err, rez){
+    console.log(err);
+    console.log(rez);
 })
 
 

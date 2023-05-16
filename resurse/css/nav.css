@@ -17,7 +17,7 @@ nav{
     position:sticky;
     top:0;
     margin-left:calc(-1*var(--spatiere-pagina));
-    z-index: 1;
+    z-index: 2;
 }
 ul.meniu, ul.meniu ul{
 

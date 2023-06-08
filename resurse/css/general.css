@@ -22,23 +22,42 @@ body{
     --culoare-fundal:rgb(255,124,25);
     --culoare-text:black;
     --culoare-fundal-inchis:rgb(53,13,255);
-    --spatiere-pagina:50px;
-    --padding-sectiune:15px;
+    --text-meniu:black;
+  
     --culoare-iframe:rgb(255,255,255);
     --culoare-iframe-hover:rgb(186,186,242);
-    --grosime-border:2px;
+    
     --culoare1:rgb(105, 12, 224);
     --culoare2:red;
     --culoare-border:blue;
-    --margine-iframe:25px;
-    --link-stanga:93vw;
+    
+   
     --link-shadow-color:red;
     --link-back-color:rgb(220,220,220);
     --culoare-griduri:radial-gradient(white,#FFF519);
+   
+}
+
+body.dark{
+    --culoare-titlu:#01158E;
+    --culoare-fundal:#AD7835;
+    --culoare-text:white;
+    --culoare-griduri:radial-gradient(black,#AD7835);
+    --culoare-fundal-inchis:#01158E;
+    --text-meniu:white;
+}
+
+body{
+    --spatiere-pagina:50px;
+    --padding-sectiune:15px;
+    --grosime-border:2px;
+    --margine-iframe:25px;
+    --link-stanga:93vw;
     --curbura-border:30px;
 }
+
 h1{
-    
+   
     font-family: 'Alumni Sans Inline One', cursive;
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
@@ -359,3 +378,55 @@ h1, .h1 {
     font-size: 2em;
     font-weight: bolder;
   }
+
+
+.schimbaretema{
+    display: flex;
+    float: right;
+    margin-right: 20px;
+}
+
+.disclbanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 25vw;
+    height: 25vw;
+    background-color: red;
+    /* display: none; */
+    transform-origin: left bottom;
+  }
+  
+.inbanner p{
+   text-align: center;
+   font-size: 1.2vw;
+   font-family: bold;
+
+}
+.inbanner button{
+    background-color: red;
+    cursor: pointer;
+    border:1px solid green;
+    border-radius: 2px;
+    margin-top: 2px;
+}
+  
+@keyframes slideUp {
+    0% {
+      transform: scale(0,0);
+      opacity:0;
+    }
+    50% {
+        transform: scale(0.5,0.5);
+        opacity:0.375
+    }
+    100% {
+        transform: scale(1,1);
+        opacity: 0.75;
+    }
+  }
+
+.disclbanner {
+    animation: slideUp 5s linear;
+    animation-fill-mode: forwards;
+}

@@ -15,6 +15,12 @@
         <section>
             <h2>Pagină produs</h2>
                 <article id="art-produs">
+                    <script>
+                       
+                            numeProdus = "<%- locals.prod.nume %>"; 
+                            setUltimulProdusAccesatCookie(numeProdus);
+                        
+                    </script>
                     <h3><span class="nume"><%- locals.prod.nume %></span></h3>
                     <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
                     <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>

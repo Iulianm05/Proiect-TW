@@ -31,6 +31,7 @@ window.onload=function(){
        
         
     }
+    
 
     // document.querySelectorAll("p.c1+p") - selecteaza urmatorul p de dupa c1
     

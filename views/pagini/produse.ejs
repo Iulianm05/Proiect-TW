@@ -4,6 +4,8 @@
         <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
         <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
         <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+        <link rel="stylesheet" href="/resurse/css/produse-1000.css" type="text/css" media="screen and (max-width:1000px)">
+        <link rel="stylesheet" href="/resurse/css/produse-500.css" type="text/css" media="screen and (max-width:700px)">
         
         <title>Cofetăria Dulcelind - home</title>
         <%- include("../fragmente/head") %>     
@@ -14,16 +16,24 @@
     <%- include("../fragmente/header") %>
 
     <main>
-        <label> Nume: <input type="text" id="inp-nume"></label>
+        <label> Nume: <input type="text" id="inp-nume" list="id_lista" placeholder="Introdu nume">
+            <datalist id="id_lista">
+                <option value="Fifa 22">Fifa 22</option>
+                <option value="Red Dead Redemption">Red Dead Redemption</option>
+                <option value="Fortnite">Fortnite</option>
+                <option value="Minecraft">Minecraft</option>
+                <option value="Mad Max">Mad Max</option>
+            </datalist>
+        </label>
         <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
-        <div> Calorii:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-            <p><label>Dietetic (calorii &lt; 350)
+        <div> Durata finalizare joc:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
+            <p><label>Simplu de terminat (durata_finalizare &lt; 350)
                 <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
             </label></p>
-            <p><label>Mediu (350 &le; calorii &lt; 700)
+            <p><label>Mediu (350 &le; durata_finalizare &lt; 700)
                 <input id="i_rad2"  name="gr_rad" value="350:750" type="radio"/>
             </label>
-            <p><label>Ridicat caloric (700 &le; calorii)
+            <p><label>Greu de finalizat (700 &le; durata_finalizare)
                 <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
             </label>
             <p><label>Toate
@@ -32,7 +42,7 @@
         </div>
 
 
-        <label> Pret minim: <input type="range" id="inp-pret" value="0" min="0"  max="500"> <span id="infoRange">(0)</span></label>
+        <label> Pret minim: (0)<input type="range" id="inp-pret" value="0" min="0"  max="500">(500) <span id="infoRange">(0)</span></label>
         <label>Select simplu:
             <select id="inp-categorie">
                 <option id="sel-toate" selected value="toate">toate</option>
@@ -41,16 +51,55 @@
                 <% } %>
             </select>
         </label>
-        <p>
-        <button id="filtrare" class="btn btn-primary">Filtreaza</button> 
-
-        <button id="resetare">Reseteaza</button><br/>
-        <button id="sortCrescNume">Sorteaza crescator dupa pret si nume</button>
-        <button id="sortDescrescNume">Sorteaza descrescator dupa pret si nume</button>
+        <br>
+        <details>
+            <summary> <label>afișează doar cu discount pe baza criteriului:</label></summary>
+                <div>
+                   
+                    <label class="btn btn-outline-primary" class="checkboxes" >Jocuri pentru copii
+                        <input   id="i_check1" name="gr_chck" value="Pentru copii" type="checkbox"/>
+                    </label>
+                    
+                    <label class="checkboxes" >Jocuri blu-ray
+                        <input  id="i_check2" name="gr_chck" value="true" type="checkbox"/>
+                    </label>
+                
+                    <label class="checkboxes" >Jocuri aparute in luna decembrie.
+                        <input  id="i_check3" name="gr_chck" value="Decembrie" type="checkbox"/>
+                    </label>
+                </div>
+            
+            
+        </details>
         
+       
+        <label>Select multiplu:
+            <select id="i_sel_multiplu" multiple size="4">
+                <%var monthNames = [
+                                            "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie",
+                                            "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+                ];%>
+                <% for (let month of monthNames) { %>
+                    <option value="<%- month %>" selected><%- month %> </option>
+                <% } %>
+            </select>
+        </label>
+        <br>
+        <br>
+        <label>Textarea:
+            <textarea id="i_textarea">ceva in textarea</textarea>
+        </label>
+    </body>
+    </html>
+        <p>
+        <button id="filtrare" class="btn btn-primary"><i class="bi bi-funnel"></i><span class="textbtn">Filtreaza</span> </button> 
+        <button id="resetare" class="btn btn-danger"><i class="bi bi-archive-fill"></i><span class="textbtn">Reseteaza</span></button><br/>
+        <button id="sortCrescNume" class="btn btn-secondary"><i class="bi bi-sort-down-alt"></i><span class="textbtn">Sorteaza crescator dupa pret si nume</span></button>
+        <button id="sortDescrescNume" class="btn btn-secondary"><i class="bi bi-sort-down"></i><span class="textbtn">Sorteaza descrescator dupa pret si nume</span></button><br>
+        <button id="calcsuma" class="btn btn-info"><i class="bi bi-bank"></i><span class="textbtn">Calculeaza suma</span> </button>
         </p>
         
-        <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
+        <p id="p-suma"> </p>
         <section id="produse">
             <h2>Produse</h2>
             <div class="grid-produse">
@@ -59,19 +108,36 @@
                         <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
                         <div class="int-produs">
                             <div class="prod-init">
-                                <figure>
-                                    <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" /></a>
+                                <figure >
+                                    <a class="imagini" href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;" alt="[imagine <%- prod.nume %>]" /></a>
                                 </figure>
-                                <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
-                                <p class="categorie">Categorie:<span class="val-categorie"><%- prod.cerinte%></span></p>
+                              
+                                <p class="pret " href="/produs/<%-prod.id %>">Pret: <span class="val-pret"><%- prod.pret%> lei</span></p>
+                                <p class="categorie">Categorie:<span class="val-categorie"><%- prod.tip_produs%></span></p>
                             </div>
                             <details class="detalii" >
-                                <summary>Specificatii</summary>
+                                <summary id="specificatii">Specificatii</summary>
                                 <div class="info-prod">
-                               
-                                    <p class="calorii">Dezvoltator: <span class="dezv"><%- prod.dezvoltator%></span></p>
-                                    <p class="gramaj">Varsta adecvata: <span class="varsta"><%- prod.clasificare_varsta%></span></p>
+                                    <ul>
+                                    <li><p class="calorii"><span class="atr">Dezvoltator:</span><span class="dezv val"><%- prod.dezvoltator%></i></span></p></li>
+                                    <li><p class="fizic"> <span class="atr">Format blu-ray:</span>  <span class="val-fizic val"><%= prod.joc_fizic ? 'DA' : 'nu' 
+                                        %></span></p></li>
+                                    <li><p class="data-adaugare"> <span class="atr">Data adaugarii:</span>  <time class="val-data-adaugare val"><% function getMonthName(month) {
+                                        var monthNames = [
+                                            "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie",
+                                            "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+                                        ];
+                                        return monthNames[month];
+                                    }  %>
+                                    <% date=prod.data_adaugare %>
+                                    <%- date.getDate() %>-<%- getMonthName(date.getMonth()) %>-<%- date.getFullYear() %>
+                                   
+                                </time></p></li>
+                                    <li> <p class="durata_p"><span class="atr">Durata estimata: </span><span class="val-durata val"><%- prod.durata_finalizare%>min</span></p></li>
+                                   <li><p class="pentru_p"><span class="atr">Clasificare:</span> <span class="val-pentru val"><%= prod.categ.replace(/[{}"]/g, '')%></span></p></li>
+                                </ul>
                                 </div>
+                            
                             </details>
                             
                             

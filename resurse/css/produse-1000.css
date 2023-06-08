@@ -1,0 +1,18 @@
+@media screen and (max-width:1000px){
+    .grid-produse {
+        display: grid;
+         grid-template-columns: repeat(2, 1fr);
+    }
+    .val{
+        font-size: var(--dimensiune-valori);
+        line-height: 10px;
+    }
+   .produs{
+    height: 350px;
+   }
+   .grid-produse .produs figure img{
+    
+    height: 80px;
+    width: 100px;
+    }
+}

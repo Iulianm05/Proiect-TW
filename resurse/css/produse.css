@@ -1,19 +1,33 @@
+/* @import "general.css"; */
 main{
     --padd-main:1rem;
+    /* --culoare-griduri:radial-gradient(white,#FFF519); */
     padding-left:var(--padd-main);
     padding-right:var(--padd-main);
 }
-
+body{
+    --dimensiune-valori:15px;
+}
+.checkboxes{
+    display:block;
+    width:50%;
+    
+    
+}
 .grid-produse{
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:1rem;
+    
 
 }
 .grid-produse .produs{
+   
+    background-image: var(--culoare-griduri);
     border-radius: 2rem;
     box-shadow: 0px 0px 0.8rem 0.3rem grey;
     overflow: hidden;
+    
 }
 
 .grid-produse .produs h3{
@@ -28,7 +42,8 @@ main{
     color:black;
 }
 .grid-produse .produs h3 a:hover{
-    color:white;
+    
+    background-size:0 0;
 }
 .grid-produse .produs figure{
     text-align: center;
@@ -41,11 +56,7 @@ main{
    
     background-color: var(--cl-marcare);
 }
-.grid-produse .produs .info-prod p{
-    /* width:30%;
-    /* text-align:center; */
-    font-weight:bold; 
-}
+
 
 .grid-produse .produs p.categorie{
 
@@ -55,15 +66,17 @@ main{
 
 .info-produse{
     background-color: var(--cl-marcare);
-    padding:0.2rem;
+    /* padding:0.2rem; */
+    padding: 0;
     box-shadow: 0px 0px 0.5rem 0.15rem grey;
 }
 
 .produs{
     position: relative;
+    /* height: 350px; */
 }
 .selecteaza-cos{
-    display: inline-block;
+    display: block;
     background-color: var(--culoare-mov);
     position:absolute;
     bottom:0.5rem;
@@ -82,15 +95,27 @@ main{
 
 .int-produs{
     display: grid;
-    height: 200px;
+    height: 220px;
     grid-template-columns: 1fr 1fr;
+ 
+    
    
 }
 .prod-init{
-    border-right: 3px solid red;
+  
     text-align:center;
     font-weight:bold;
 }
-.detalii{
-    padding-left: 10px ;
+.info-prod{
+    line-height: 9px;
+    
 }
+
+.val{
+    font-style: italic;
+    font-size: var(--dimensiune-valori);
+}
+p .atr{
+    font-weight: bold;
+}
+

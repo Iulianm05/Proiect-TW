@@ -4,7 +4,7 @@
 function setCookie(nume, val, timpExpirare){//timpExpirare in milisecunde
     d=new Date();
     d.setTime(d.getTime()+timpExpirare)
-    document.cookie=`${nume}=${val}; expires=${d.toUTCString()}`;
+    document.cookie=`${nume}=${val}; expires=${d.toUTCString()};path=/`;
 }
 
 function getCookie(nume){
@@ -21,6 +21,15 @@ function deleteCookie(nume){
     document.cookie=`${nume}=0; expires=${(new Date()).toUTCString()}`;
 }
 
+function deleteAllCookies(){
+    vectorParametri=document.cookie.split(";")
+    for(let param of vectorParametri){
+        deleteCookie(param);
+    }
+}
+function setUltimulProdusAccesatCookie(produs) {
+    setCookie("ultimulProdusAccesat", produs, 10000); // Exemplu de expirare: 1 an
+  }
 
 window.addEventListener("load", function(){
     if (getCookie("acceptat_banner")){
